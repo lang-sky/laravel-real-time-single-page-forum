@@ -14,13 +14,17 @@ class CreateRepliesTable extends Migration
     public function up()
     {
         Schema::create('replies', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id')->index();
             $table->text('body');
-
             $table->integer('question_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->timestamps();
+        });
+
+        Schema::table('replies', function ($table) {
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

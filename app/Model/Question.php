@@ -10,10 +10,10 @@ class Question extends Model
     /**
      * get('api/question/{slug}')
      */
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+    // public function getRouteKeyName()
+    // {
+    //     return 'slug';
+    // }
 
     /**
      * make it possible for  Question::create($request->all());
